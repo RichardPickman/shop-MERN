@@ -1,1 +1,1 @@
-# shop with MERN stack
+# MERN-shop
