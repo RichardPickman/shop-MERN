@@ -1,7 +1,7 @@
 import express, { json } from 'express';
 import cors from 'cors';
 import { getServerConfig } from './config';
-import router from './Routes';
+import router from './routes';
 import errorHandler from './middleware/ErrorHandle/index'
 import './model/db';
 
