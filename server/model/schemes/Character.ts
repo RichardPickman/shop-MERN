@@ -11,6 +11,6 @@ const characterSchema = new mongoose.Schema({
     season: [Number]
 });
 
-const charModel = mongoose.model('characters', characterSchema)
+const charModel = mongoose.model('characters', characterSchema);
 
 export default charModel;

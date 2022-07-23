@@ -3,7 +3,7 @@ import userController from '../controllers/userController';
 import JwtMiddleware from '../middleware/Token'
 
 const user = new userController();
-const router = Router()
+const router = Router();
 
 router.post('/registration', user.registration);
 router.post('/login', user.login);
