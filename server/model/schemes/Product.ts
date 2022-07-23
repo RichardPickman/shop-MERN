@@ -1,25 +1,7 @@
-import mongoose from "mongoose";
-import { ImageSchema } from './Image'
+import mongoose, { Document } from "mongoose";
+import { Product } from '../../types';
 
-interface Product {
-    name: string,
-    thumbnail: typeof ImageSchema,
-    gallery: [],
-    characters: number[],
-    season: number[],
-    category: string,
-    count: number,
-    year: number,
-    color: string,
-    size: string,
-    favorite: false,
-    price: number,
-    discount: number,
-    shipping: number,
-    rating: number,
-}
-
-const productSchema = new mongoose.Schema<Product>({
+export const productSchema = new mongoose.Schema<Product>({
     name: String,
     thumbnail: String,
     gallery: Array,
@@ -30,7 +12,7 @@ const productSchema = new mongoose.Schema<Product>({
     year: Number,
     color: String,
     size: String,
-    favorite: false,
+    favorite: Boolean,
     price: Number,
     discount: Number,
     shipping: Number,
