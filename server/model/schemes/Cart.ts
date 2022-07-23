@@ -1,8 +1,19 @@
 import mongoose from 'mongoose';
-import productModel from './Product';
+import { productSchema } from './Product';
+import { Cart, CartProduct } from '../../types';
 
 
-const cartSchema = new mongoose.Schema({
-    items: [productModel],
-    subTotal: Number,
+const cartProductSchema = new mongoose.Schema<CartProduct>({
+    amount: Number,
+    product: productSchema,
+    subTotal: Number
 })
+
+const cartSchema = new mongoose.Schema<Cart>({
+    userId: String,
+    items: [cartProductSchema],
+})
+
+const cartModel = mongoose.model('cart', cartSchema);
+
+export default cartModel;
