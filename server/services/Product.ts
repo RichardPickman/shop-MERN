@@ -11,7 +11,9 @@ class ProductService {
     }
 
     async remove(id: string) {
-        return productModel.deleteOne({ _id: id }).then(() => console.log('removed ' + id));
+        const removeProduct = await productModel.deleteOne({ _id: id });
+
+        return;
     }
 
     async update(data: { [k: string]: string }) {

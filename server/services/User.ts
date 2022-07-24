@@ -4,22 +4,23 @@ import userModel from "../model/schemes/User";
 
 class UserService {
     async create({ user, email, password, role }: { [k: string]: string }) {
-        const create = await new userModel(({ user, email, role, password })).save();
-        const createdUser = await this.find({ email });
+        const createUser = await new userModel(({ user, email, role, password }))
+        .save()
+        .then(() => this.find({ email }));
 
-        return createdUser;
+        return createUser;
     }
 
-    async delete({ email }: { [k: string]: unknown }) {
-        const create = new userModel();
+    async delete(id: string) {
+        const removeItem = await userModel.deleteOne({ _id: id });
 
-        create.deleteOne({ email });
+        return removeItem;
     }
 
     async update({ user, email, password }: { [k: string]: string }) {
-        const createUser = new userModel({ user, email, password });
+        const createUser = new userModel({ user, email, password }).save();
 
-        createUser.save(() => ApiError.forbidden('Something went wrong'))
+        return createUser;
     }
 
     async find({ email }: { [k: string]: string }) {

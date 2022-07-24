@@ -66,6 +66,16 @@ class UserController {
 
         return res.json({ token });
     }
+
+    async remove(req: Request, res: Response, next: any) {
+        const id = req.params.id;
+
+        const removeUser = await UserResolver.delete(id);
+
+        console.log(removeUser)
+
+        res.json({ message: 'Removed successfully', payload: removeUser })
+    }
 }
 
 export default UserController;

@@ -5,7 +5,7 @@ import { CartProduct } from '../types';
 
 class cartService {
     async create(payload: { [k: string]: any }) {
-        await new cartModel(payload).save().then(() => console.log('Cart created'));
+        await new cartModel(payload).save();
 
         const getCreatedCart = await this.getCart(payload.userId);
 
@@ -31,7 +31,7 @@ class cartService {
             findUserCart.items.push({ amount: 1, product: findItem, subTotal: findItem.price } as CartProduct);
         }
 
-        await findUserCart.save();
+        findUserCart.save();
 
         return findUserCart;
     }
@@ -61,8 +61,6 @@ class cartService {
         const getCart = await this.getCart(userId);
 
         getCart.items = [];
-
-        console.log(getCart);
 
         await getCart.save();
 

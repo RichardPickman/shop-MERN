@@ -20,8 +20,9 @@ class characterController {
     }
 
     async remove(shortcut: string) {
-        
-        return charModel.deleteOne({ shortcut }).then(() => console.log('removed ' + shortcut));
+        const removeChar = await charModel.deleteOne({ shortcut });
+
+        return;
     }
 }
 
